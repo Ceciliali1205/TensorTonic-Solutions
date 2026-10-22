@@ -8,8 +8,8 @@ def row_summary(data: list, threshold: float) -> np.ndarray:
     # element masking
     elem_mask = (arr > threshold).astype(np.float64)
     # any row
-    any_row_mask = np.any(arr > threshold, axis=1)
-    any_row = np.where(any_row_mask[:,np.newaxis], arr, 0.0)
+    any_row_mask = np.any(arr > threshold, axis=1) # 1D array
+    any_row = np.where(any_row_mask[:,np.newaxis], arr, 0.0) # adding a dimension allows numpy to broadcast the mask across all columns in each row
     #all 
     all_row_mask = np.all(arr > threshold, axis = 1)
     all_row = np.where(all_row_mask[:, np.newaxis], arr, 0.0)
