@@ -9,6 +9,8 @@ def knn_classifier(X_train: list, y_train: list, X_test: list, k: int) -> list:
     predictions = []
     for point in X_test:
         # sorted takes each index and passes into the lambda
+        # lambda calculates a sorting key for each index
+        # sorted(iterable, key=lambda x: something), return elements of iterable
         order = sorted(range(len(X_train)), key=lambda index:(float(np.sum((X_train[index] - point) ** 2)), index))
         counts = {}
         for index in order[:k]:
